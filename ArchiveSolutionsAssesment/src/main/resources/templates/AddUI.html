@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:action="@{/index.html}">
+<html lang="en" th:action="@{/index.html}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="/AddUI.css">
 </head>
 <body>
-<form id="add-article-form">
+<form id="add-article-form" th:action="@{/index.html}" th:object="${AddUI}">
     <h2>Add Article (CeFPro Connect Section)</h2>
     <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title" th:field="*{title}">Title</label>
         <input type="text" id="title" name="title" required>
     </div>
     <div class="form-group">
         <label for="authors">Authors</label>
-        <select id="authors" name="authors" multiple required>
+        <select id="authors" name="authors" multiple required th:field="*{authors}">
             <option value="">Select Authors</option>
             <option value="author1">Author 1</option>
             <option value="author2">Author 2</option>
@@ -24,15 +24,15 @@
     </div>
     <div class="form-group">
         <label for="public-url">Public URL</label>
-        <input type="url" id="public-url" name="public-url">
+        <input type="url" id="public-url" name="public-url" th:field="*{publicURL}">
     </div>
     <div class="form-group">
         <label for="article-date">Article Date</label>
-        <input type="date" id="article-date" name="article-date" required>
+        <input type="date" id="article-date" name="article-date" required th:field="*{article}">
     </div>
     <div class="form-group">
         <label for="access-category">Access Category</label>
-        <select id="access-category" name="access-category" required>
+        <select id="access-category" name="access-category" required th:field="*{access}">
             <option value="">Select Category</option>
             <option value="free">Free</option>
             <option value="paid">Paid</option>
@@ -40,25 +40,21 @@
     </div>
     <div class="form-group">
         <label for="free-view-expiry">Free View Expiry</label>
-        <input type="date" id="free-view-expiry" name="free-view-expiry">
+        <input type="date" id="free-view-expiry" name="free-view-expiry" th:field="*{expiry}">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea id="description" name="description" required></textarea>
+        <textarea id="description" name="description" required th:field="*{description}"></textarea>
     </div>
     <div class="form-group">
         <label for="featured-image">Featured Image</label>
         <p>850w x 700h</p>
-        <input type="file" id="featured-image" name="featured-image" accept="image/*">
+        <input type="file" id="featured-image" name="featured-image" accept="image/*" th:field="*{image}">
     </div>
     <div class="form-group">
         <p>Drag and drop a file here or click to upload</p>
         <p>PDF File or Image File</p>
-        <input type="file" id="file-upload" name="file-upload" accept=".pdf,.jpg,.jpeg,.png">
-    </div>
-    <div class="form-group">
-        <label for="link-to-url">Link to URL (optional)</label>
-        <input type="url" id="link-to-url" name="link-to-url">
+        <input type="file" id="file-upload" name="file-upload" accept=".pdf,.jpg,.jpeg,.png" th:field="*{pdf}">
     </div>
     <div class="form-group">
         <p>For in-text advertisement, add this display middle-ads-here text in the description above.</p>

@@ -1,0 +1,76 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 50%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical; /* Allow textarea resizing */
+}
+
+.form-group textarea {
+    height: 100px; /* Set a default height for textarea */
+}
+
+button[type="submit"]{
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; /* Add space between buttons */
+    margin-left: 80px;
+    height: 40px;
+    margin-top: 50px;
+}
+button[type="button"]{
+    background-color: #4267b2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 50px;
+    height: 40px;
+}
+
+button[type="submit"]:hover{
+    background-color: #45A049; /* Darker green on hover */
+}
+button[type="button"]:hover{
+    background-color: #3e61a8;
+}
