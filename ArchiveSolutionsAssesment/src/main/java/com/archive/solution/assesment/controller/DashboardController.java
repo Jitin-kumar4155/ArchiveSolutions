@@ -1,5 +1,7 @@
 package com.archive.solution.assesment.controller;
 
+import com.archive.solution.assesment.dto.AddUIDTO;
+import com.archive.solution.assesment.dto.UserLoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,6 +10,7 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.archive.solution.assesment.dao.UserRepository;
@@ -18,6 +21,12 @@ import com.archive.solution.assesment.dao.UserRepository;
 public class DashboardController {
 	@Autowired
 	UserRepository userRepo;
+
+	@ModelAttribute("AddUI")
+	public AddUIDTO addUIDTODTO() {
+		return new AddUIDTO();
+	}
+
 	@GetMapping
     public String displayDashboard(Model model){
 		SecurityContext securityContext = SecurityContextHolder.getContext();
@@ -29,7 +38,7 @@ public class DashboardController {
 			com.archive.solution.assesment.model.User users = userRepo.findByEmail(user.getUsername());
 			model.addAttribute("userDetails", users.getName());
 		}
-        return "list";
+        return "AddUI";
     }
 
 }
