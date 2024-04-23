@@ -15,6 +15,11 @@ public class AddUIServiceImpl implements AddUIService{
     @Autowired
     AddUIRepository addUIRepository;
 
+    public AddUIServiceImpl(AddUIRepository addUIRepository) {
+        super();
+        this.addUIRepository = addUIRepository;
+    }
+
     @Override
     public AddUI save(AddUIDTO addUIDTO){
         AddUI addUI = new AddUI();
