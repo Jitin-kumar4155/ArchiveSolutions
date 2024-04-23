@@ -1,7 +1,10 @@
 package com.archive.solution.assesment.controller;
 
+import com.archive.solution.assesment.dao.AddUIRepository;
 import com.archive.solution.assesment.dto.AddUIDTO;
 import com.archive.solution.assesment.dto.UserLoginDTO;
+import com.archive.solution.assesment.dto.UserRegisteredDTO;
+import com.archive.solution.assesment.service.AddUIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.archive.solution.assesment.dao.UserRepository;
@@ -21,6 +25,14 @@ import com.archive.solution.assesment.dao.UserRepository;
 public class DashboardController {
 	@Autowired
 	UserRepository userRepo;
+
+	@Autowired
+	AddUIService addUIService;
+
+	public DashboardController(AddUIService addUIService) {
+		super();
+		this.addUIService = addUIService;
+	}
 
 	@ModelAttribute("AddUI")
 	public AddUIDTO addUIDTODTO() {
@@ -40,5 +52,15 @@ public class DashboardController {
 		}
         return "AddUI";
     }
+	@PostMapping
+	public String addUIAndSave(@ModelAttribute("AddUI")
+									  AddUIDTO addUIDTO) {
+		addUIService.save(addUIDTO);
+		return "list";
+	}
 
+	@GetMapping("/list")
+	public String listUI(){
+		return "list";
+	}
 }

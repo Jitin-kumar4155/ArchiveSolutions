@@ -10,8 +10,4 @@ public interface DefaultUserService extends UserDetailsService{
 
 	User save(UserRegisteredDTO userRegisteredDTO);
 
-
-
-
-	
 }
